@@ -1,0 +1,15 @@
+server:
+ port: 8080
+ 
+spring:
+  application:
+    name: Hello_Pita_Dash
+
+eureka:
+  client:
+   fetchRegistry: true
+   registerWithEureka: true 
+   serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost
