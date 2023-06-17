@@ -1,10 +1,11 @@
-FROM openjdk:17-jdk-alpine
+#FROM openjdk:17-jdk-alpine
 #WORKDIR /app
 
 #COPY target/Hello_Pita_Dash_Service-0.0.1-SNAPSHOT.jar app.jar
-ADD target/pitadashservice.jar app.jar
-EXPOSE 8086
-COPY .env /
+#ADD target/pitadashservice.jar app.jar
+#EXPOSE 8086
+#COPY .env /
+#ENTRYPOINT ["java","-jar","app.jar"]
 #ENV MYSQL_USERNAME=root
 #ENV MYSQL_PASSWORD=root
 #ENV MYSQL_DATABASE=pitadash
@@ -13,7 +14,7 @@ COPY .env /
 #RUN apk add --no-cache mysql-client
 
 
-ENTRYPOINT ["java","-jar","app.jar"]
+
 
 #"--spring.datasource.url=jdbc:mysql://mysql-container:3306/pitadash","--spring.datasource.username=root","--spring.datasource.password=root"
 
