@@ -23,7 +23,7 @@ public class CustomerController {
 	public String home() {
 		return "Welcome to the Home Page";
 	}
-	@GetMapping(value="/customer")
+	@GetMapping(value="customer")
 	public String adminHello(CustomerModel user) {
 		System.out.println("Hello From Customer Controller");
 		return "Hello From Customer Controller";
