@@ -1,1 +1,4 @@
+Manifest-Version: 1.0  
+Built-By: Integ  
+Build-Jdk: 17  
 Main-Class: HelloPitaDashServiceApplication
