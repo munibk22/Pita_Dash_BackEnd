@@ -1,11 +1,12 @@
-#FROM openjdk:17-jdk-alpine
+FROM openjdk:17-jdk-alpine
 #WORKDIR /app
 
 #COPY target/Hello_Pita_Dash_Service-0.0.1-SNAPSHOT.jar app.jar
-#ADD target/pitadashservice.jar app.jar
-#EXPOSE 8086
-#COPY .env /
-#ENTRYPOINT ["java","-jar","app.jar"]
+ADD target/pitadashservice.jar app.jar
+EXPOSE 5757
+#8086
+COPY .env /
+ENTRYPOINT ["java","-jar","app.jar"]
 #ENV MYSQL_USERNAME=root
 #ENV MYSQL_PASSWORD=root
 #ENV MYSQL_DATABASE=pitadash
