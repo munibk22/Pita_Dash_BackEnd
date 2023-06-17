@@ -131,7 +131,7 @@
             <configuration>  
                 <archive>  
                     <manifest>  
-                        <mainClass>com.munib.dash.HelloPitaDashServiceApplication</mainClass>  
+                        <mainClass>com.munib.dash.HelloPitaDashServiceApplication2</mainClass>  
                     </manifest>  
                 </archive>  
             </configuration>  
