@@ -12,7 +12,7 @@ public class HelloPitaDashServiceApplication {
 //	@Autowired
 //	CustomerRepository repository;
 	
-	  private static final Logger log = LoggerFactory.getLogger(HelloPitaDashServiceApplication.class);
+	 // private static final Logger log = LoggerFactory.getLogger(HelloPitaDashServiceApplication.class);
 
 	public static void main(String[] args) {
 		SpringApplication.run(HelloPitaDashServiceApplication.class, args);
