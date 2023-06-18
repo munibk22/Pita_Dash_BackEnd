@@ -45,6 +45,7 @@ public class SecurityConfiguration {
 					auth.requestMatchers("/").permitAll();
 					auth.requestMatchers("/hello").permitAll();
 					auth.requestMatchers("/payment/**").permitAll();
+					auth.requestMatchers("/auth/**").permitAll();
 					auth.requestMatchers("/admin/**").hasRole("ADMIN");
 	                auth.requestMatchers("/user/**").hasAnyRole("ADMIN", "USER");
 					auth.anyRequest().authenticated();
