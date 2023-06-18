@@ -52,9 +52,9 @@ public class AuthenticationService {
 		String lastName,String address,String zipCode, String phone, int id
 		) {
 		String encodedPW = passwordEncoder.encode(password);
-		Role userRole = roleRepository.findByAuthority("USER").get();
-		Set<Role> authorities = new HashSet<>();
-		authorities.add(userRole);
+//		Role userRole = roleRepository.findByAuthority("USER").get();
+//		Set<Role> authorities = new HashSet<>();
+//		authorities.add(userRole);
 		try {
 		CustomerModel customer = customerRepository.save(new CustomerModel(userName, encodedPW
 				,firstName, lastName,address, zipCode, phone,id));
