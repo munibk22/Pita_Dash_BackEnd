@@ -1,5 +1,8 @@
 package com.munib.dash.Controllers;
 
+import java.sql.SQLException;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -28,6 +31,11 @@ public class CustomerController {
 		System.out.println("Hello From Customer Controller");
 		return "Hello From Customer Controller";
 //		return customerService.loadUserByUsername(user.getUsername());
+	}
+	
+	@GetMapping(value="customer/findAll")
+	public List<CustomerModel> findAll() throws SQLException {
+		return customerService.findAll();
 	}
 
 }
