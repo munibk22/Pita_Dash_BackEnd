@@ -168,7 +168,7 @@ public CustomerModel(int id, String firstName, String lastName, String userName,
 }
 
 
-public CustomerModel(String userName2, String encodedPW, Set<Role> authorities2, String firstName2, String lastName2,
+public CustomerModel(String userName2, String encodedPW, String firstName2, String lastName2,
 		String address2, String zipCode2, String phone2, int id2) {
 	this.id = id2;
 	this.firstName = firstName2;
@@ -179,7 +179,6 @@ public CustomerModel(String userName2, String encodedPW, Set<Role> authorities2,
 	this.address = address2;
 	this.zipCode = zipCode2;
 	this.phone = phone2;
-	this.authorities = authorities2;
 }
 
 

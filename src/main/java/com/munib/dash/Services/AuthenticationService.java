@@ -56,7 +56,7 @@ public class AuthenticationService {
 		Set<Role> authorities = new HashSet<>();
 		authorities.add(userRole);
 		try {
-		CustomerModel customer = customerRepository.save(new CustomerModel(userName, encodedPW, authorities
+		CustomerModel customer = customerRepository.save(new CustomerModel(userName, encodedPW
 				,firstName, lastName,address, zipCode, phone,id));
 		CustomerModel data = stripeController.index(customer);
 		customer.setStripeId(data.getStripeId());
