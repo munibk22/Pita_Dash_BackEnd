@@ -19,16 +19,18 @@ public class AuthenticationController {
 
 	@Autowired
 	private AuthenticationService authenticationService;
-	
+
 	@PostMapping(value = "/register")
 	public CustomerModel registerCustomer(@RequestBody RegistrationDTO registrationBody) {
-		return authenticationService.registerCustomer(registrationBody.getUserName(),
-				registrationBody.getPassword()
-				,registrationBody.getFirstName(),
+		return authenticationService.registerCustomer(				
+				registrationBody.getUserName(),
+				registrationBody.getPassword(),
+				registrationBody.getFirstName(),
 				registrationBody.getLastName(),
 				registrationBody.getAddress(),
 				registrationBody.getZipCode(),
-				registrationBody.getPhone()
+				registrationBody.getPhone(),
+				registrationBody.getId()
 				);	
 		
 	};

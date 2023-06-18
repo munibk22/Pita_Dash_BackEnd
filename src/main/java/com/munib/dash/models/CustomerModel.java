@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@AllArgsConstructor
+
 @NoArgsConstructor
 public class CustomerModel implements UserDetails{
 
@@ -31,7 +31,7 @@ public class CustomerModel implements UserDetails{
 	private static final long serialVersionUID = -2780711269963546409L;
 	
   @Id
-  @GeneratedValue(strategy=GenerationType.AUTO)
+  //@GeneratedValue(strategy=GenerationType.AUTO)
   @Column(name="user_id")
   private int id;
   private String firstName;
@@ -125,6 +125,8 @@ public CustomerModel(int i, String string, String encode) {
 	this.password = encode;
 }
 
+
+
 //public Customer(String userName2, String encodedPW, Set<Role> authorities2, String firstName2, String lastName2, String address2, String zipCode2, String phone2) {
 //	
 //}
@@ -157,6 +159,27 @@ public CustomerModel(String userName, String password, Set<Role> authorities,
 	this.zipCode = zipCode;
 	this.phone = phone;
 	this.authorities = authorities;
+}
+
+public CustomerModel(int id, String firstName, String lastName, String userName, String password, String email,
+		String address, String zipCode, String phone, String stripeId, Set<Role> authorities) {
+	super();
+	
+}
+
+
+public CustomerModel(String userName2, String encodedPW, Set<Role> authorities2, String firstName2, String lastName2,
+		String address2, String zipCode2, String phone2, int id2) {
+	this.id = id2;
+	this.firstName = firstName2;
+	this.lastName = lastName2;
+	this.userName = userName2;
+	this.password = encodedPW;
+	this.email = userName2;
+	this.address = address2;
+	this.zipCode = zipCode2;
+	this.phone = phone2;
+	this.authorities = authorities2;
 }
 
 

@@ -40,9 +40,16 @@ public class AuthenticationService {
 
 	@Autowired
 	private TokenService tokenService;
-
+//	registrationBody.getPhone(),
+//	registrationBody.getUserName(),
+//	registrationBody.getPassword()
+//	,registrationBody.getFirstName(),
+//	registrationBody.getLastName(),
+//	registrationBody.getAddress(),
+//	registrationBody.getZipCode(),
+//	registrationBody.getId()
 	public CustomerModel registerCustomer(String userName, String password,String firstName,
-		String lastName,String address,String zipCode, String phone
+		String lastName,String address,String zipCode, String phone, int id
 		) {
 		String encodedPW = passwordEncoder.encode(password);
 		Role userRole = roleRepository.findByAuthority("USER").get();
@@ -50,7 +57,7 @@ public class AuthenticationService {
 		authorities.add(userRole);
 		try {
 		CustomerModel customer = customerRepository.save(new CustomerModel(userName, encodedPW, authorities
-				,firstName, lastName,address, zipCode, phone));
+				,firstName, lastName,address, zipCode, phone,id));
 		CustomerModel data = stripeController.index(customer);
 		customer.setStripeId(data.getStripeId());
 		System.out.println(data);
