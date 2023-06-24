@@ -47,7 +47,7 @@ public class PaymentController {
 //	@Value("${STRIPE_SECRET_KEY}")
 //	private String stripeSecretKey;
 	
-	private String publishableKey = dotenv.get("STRIPE_PUBLIS_KEY"); ;
+	private String publishableKey = dotenv.get("STRIPE_PUBLISH_KEY"); ;
 	private String stripeSecretKey = dotenv.get("STRIPE_SECRET_KEY");
 	
 	
@@ -62,15 +62,15 @@ public class PaymentController {
 	@PostConstruct
 	public void init() {
 //		Stripe.apiKey = stripeSecretKeyTest;
-//		Stripe.apiKey = dotenv.get("STRIPE_SECRET_KEY");
-		Stripe.apiKey = dotenv.get("STRIPE_SECRET_KEY_TEST");
+		Stripe.apiKey = dotenv.get("STRIPE_SECRET_KEY");
+//		Stripe.apiKey = dotenv.get("STRIPE_SECRET_KEY_TEST");
 //		Stripe.apiKey = stripeSecretKey;
 	}
 	@GetMapping(value = "/config")
 	public String getPublishKey() {
 //		return publishKeyTest;
-//		return publishableKey;
-		return dotenv.get("PUBLISH_KEY_TEST");
+		return publishableKey;
+//		return dotenv.get("PUBLISH_KEY_TEST");
 	};
 
 
