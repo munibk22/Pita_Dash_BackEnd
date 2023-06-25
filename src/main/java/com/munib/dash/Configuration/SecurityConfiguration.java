@@ -29,7 +29,6 @@ import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
 
 @Configuration
-@EnableWebSecurity
 public class SecurityConfiguration {
 
 	private final RSAKeyProperties keys;
