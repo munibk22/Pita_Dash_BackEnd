@@ -70,19 +70,20 @@ public class AuthenticationService {
 		return null;
 	}
 
-//	  public LoginResponseDTO loginUser(String username, String password){
-//
-//	        try{
+	  public LoginResponseDTO loginUser(String username, String password){
+
+	        try{
 //	            Authentication auth = authenticationManager.authenticate(
-//	                new UsernamePasswordAuthenticationToken(username, password)
+//	                new UsernamePasswordAuthenticationToken(username, "password")
 //	            );
-//
+
 //	            String token = tokenService.generateJwt(auth);
-//
+
 //	            return new LoginResponseDTO(customerRepository.findByUserName(username).get(), token);
-//
-//	        } catch(AuthenticationException e){
-//	            return new LoginResponseDTO(null, "");
-//	        }
-//	    }
+	                return new LoginResponseDTO(customerRepository.findByUserName(username).get(), "password");
+
+	        } catch(AuthenticationException e){
+	            return new LoginResponseDTO(null, "");
+	        }
+	    }
 }
