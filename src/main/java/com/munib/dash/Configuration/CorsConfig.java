@@ -16,7 +16,7 @@ public class CorsConfig implements WebMvcConfigurer  {
 	@Bean
 	  public CorsConfigurationSource corsConfigurationSource() {
 	    CorsConfiguration configuration = new CorsConfiguration();
-	    configuration.setAllowedOrigins(Arrays.asList("http://pitadash.com"));
+	    configuration.setAllowedOrigins(Arrays.asList("*"));
 	    configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
 	    configuration.setAllowedHeaders(Arrays.asList("Content-Type", "Authorization"));
 	    UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
