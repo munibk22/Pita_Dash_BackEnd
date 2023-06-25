@@ -24,7 +24,8 @@ public class CustomerController {
 	
 	@GetMapping
 	public String home() {
-		return "Welcome to the Home Page";
+		System.out.println("Welcome to the Home Page");
+		return "Welcome to the Home Page2";
 	}
 	@GetMapping(value="customer")
 	public String adminHello(CustomerModel user) {

@@ -21,8 +21,8 @@ public class CustomerService implements UserDetailsService{
 	@Autowired
 	CustomerRepository customerDao;
 	
-	@Autowired
-	private PasswordEncoder encoder;  
+//	@Autowired
+//	private PasswordEncoder encoder;  
 	
 	
 	@Override
