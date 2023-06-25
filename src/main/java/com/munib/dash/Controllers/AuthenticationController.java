@@ -14,7 +14,7 @@ import com.munib.dash.models.RegistrationDTO;
 
 @RestController
 @RequestMapping(value = "/auth")
-@CrossOrigin("*")
+@CrossOrigin(origins = "*")
 public class AuthenticationController {
 
 	@Autowired
