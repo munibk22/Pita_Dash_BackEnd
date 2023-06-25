@@ -23,7 +23,7 @@ public class SecurityConfig extends WebSecurityConfiguration {
             .httpStrictTransportSecurity()
                 .and()
             .addHeaderWriter((request, response) -> {
-                    response.setHeader("Content-Security-Policy", "default-src 'self'; h-ua-form-factor 'tablet';");
+                    response.setHeader("Content-Security-Policy", "default-src 'self'; ch-ua-form-factor 'tablet';");
             });
     }
 }
