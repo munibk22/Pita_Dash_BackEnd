@@ -56,7 +56,9 @@ public class SecurityConfiguration {
 					
 				})	
 			  .headers()
-			    .addHeaderWriter(new StaticHeadersWriter("Content-Security-Policy", "default-src 'self'; frame-src 'self' 'unsafe-inline' 'unsafe-eval'; form-action 'self';"));
+			  .permissionsPolicy(
+	                    permissions -> permissions.policy("ch-ua-form-factor=(\"any\")")
+	                );
 			  
 			// hhtpBasic(withDefaults()).build();
 				  http.oauth2ResourceServer()
