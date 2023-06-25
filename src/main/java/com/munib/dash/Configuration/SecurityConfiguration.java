@@ -16,6 +16,7 @@ import org.springframework.security.oauth2.jwt.NimbusJwtEncoder;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
 import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.header.writers.StaticHeadersWriter;
 
 import com.munib.dash.Services.CustomerService;
 import com.munib.dash.Utils.RSAKeyProperties;
@@ -35,10 +36,12 @@ public class SecurityConfiguration {
 		this.keys = keys;
 	}
 
+	
+	  
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		
-			http
+			http			 	
 				.csrf(csrf -> csrf.disable())
 				.authorizeHttpRequests(auth -> {
 					auth.requestMatchers("/auth/**").permitAll();
@@ -50,7 +53,11 @@ public class SecurityConfiguration {
 					auth.requestMatchers("/admin/**").hasRole("ADMIN");
 	                auth.requestMatchers("/user/**").hasAnyRole("ADMIN", "USER");
 					auth.anyRequest().authenticated();
-				});		
+					
+				})	
+			  .headers()
+			    .addHeaderWriter(new StaticHeadersWriter("Content-Security-Policy", "default-src 'self'; frame-src 'self' 'unsafe-inline' 'unsafe-eval'; form-action 'self';"));
+			  
 			// hhtpBasic(withDefaults()).build();
 				  http.oauth2ResourceServer()
 	                .jwt()
