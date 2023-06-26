@@ -32,14 +32,14 @@ public class AuthenticationService {
 	@Autowired
 	private RoleDao roleRepository;
 
-//	@Autowired
-//	private PasswordEncoder passwordEncoder;
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
-//	@Autowired
-//	private AuthenticationManager authenticationManager;
+	@Autowired
+	private AuthenticationManager authenticationManager;
 
-//	@Autowired
-//	private TokenService tokenService;
+	@Autowired
+	private TokenService tokenService;
 //	registrationBody.getPhone(),
 //	registrationBody.getUserName(),
 //	registrationBody.getPassword()
@@ -51,8 +51,7 @@ public class AuthenticationService {
 	public CustomerModel registerCustomer(String userName, String password,String firstName,
 		String lastName,String address,String zipCode, String phone, int id
 		) {
-//		String encodedPW = passwordEncoder.encode(password);
-		String encodedPW = "password";
+		String encodedPW = passwordEncoder.encode(password);
 //		Role userRole = roleRepository.findByAuthority("USER").get();
 //		Set<Role> authorities = new HashSet<>();
 //		authorities.add(userRole);
@@ -73,14 +72,13 @@ public class AuthenticationService {
 	  public LoginResponseDTO loginUser(String username, String password){
 
 	        try{
-//	            Authentication auth = authenticationManager.authenticate(
-//	                new UsernamePasswordAuthenticationToken(username, "password")
-//	            );
+	            Authentication auth = authenticationManager.authenticate(
+	                new UsernamePasswordAuthenticationToken(username, password)
+	            );
 
-//	            String token = tokenService.generateJwt(auth);
+	            String token = tokenService.generateJwt(auth);
 
-//	            return new LoginResponseDTO(customerRepository.findByUserName(username).get(), token);
-	                return new LoginResponseDTO(customerRepository.findByUserName(username).get(), "password");
+	            return new LoginResponseDTO(customerRepository.findByUserName(username).get(), token);
 
 	        } catch(AuthenticationException e){
 	            return new LoginResponseDTO(null, "");
