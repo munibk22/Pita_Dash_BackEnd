@@ -14,9 +14,6 @@ import com.stripe.model.Customer;
 import io.github.cdimascio.dotenv.Dotenv;
 import jakarta.annotation.PostConstruct;
 
-//@RestController
-//@RequestMapping(value = "/api")
-//@CrossOrigin("*")
 @Service
 public class StripeController {
 
@@ -27,15 +24,11 @@ public class StripeController {
 	
 	@PostConstruct
 	public void init() {
-//		Stripe.apiKey = stripeSecretKeyTest;
 		Stripe.apiKey = dotenv.get("STRIPE_SECRET_KEY");
-//		Stripe.apiKey = stripeSecretKey;
 	}
 	
 	
-//	@PostMapping(value = "/createCustomer")
 	public CustomerModel index(CustomerModel data ) throws StripeException {
-//		Stripe.apiKey = stripeKey;
 		Map<String,Object> params = new HashMap<String,Object>();
 		params.put("name", data.getName());
 		params.put("email", data.getEmail());

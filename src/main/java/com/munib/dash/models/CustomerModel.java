@@ -15,23 +15,18 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
-import lombok.AllArgsConstructor;
+import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-
 @NoArgsConstructor
+@Table(name = "Customers")
 public class CustomerModel implements UserDetails{
-
-  /**
-	 * 
-	 */
-	private static final long serialVersionUID = -2780711269963546409L;
-	
+  private static final long serialVersionUID = -2780711269963546409L;	
   @Id
-  //@GeneratedValue(strategy=GenerationType.AUTO)
+  @GeneratedValue(strategy=GenerationType.AUTO)
   @Column(name="user_id")
   private int id;
   private String firstName;
@@ -45,13 +40,24 @@ public class CustomerModel implements UserDetails{
   private String phone;
   String stripeId;
   
-  @ManyToMany(fetch=FetchType.EAGER)
-  @JoinTable(
-		  name = "user_role_junction",
-		  joinColumns = {@JoinColumn(name="user_id")},
-		  inverseJoinColumns = {@JoinColumn(name="role_id")}
-		  )
-  private Set<Role> authorities;
+  public CustomerModel(RegistrationDTO registrationBody) {	
+		this.userName = registrationBody.getUserName();
+		this.email = registrationBody.getUserName();
+		this.password = registrationBody.getPassword();
+		this.firstName = registrationBody.getFirstName();
+		this.lastName = registrationBody.getLastName();
+		this.address = registrationBody.getAddress();
+		this.zipCode = registrationBody.getZipCode();
+		this.phone = registrationBody.getPhone();
+  }
+  
+//  @ManyToMany(fetch=FetchType.EAGER)
+//  @JoinTable(
+//		  name = "user_role_junction",
+//		  joinColumns = {@JoinColumn(name="user_id")},
+//		  inverseJoinColumns = {@JoinColumn(name="role_id")}
+//		  )
+//  private Set<Role> authorities;
   
   
   public void setEmail() {
@@ -66,19 +72,11 @@ public class CustomerModel implements UserDetails{
 	  return this.firstName+" "+this.lastName;
   }
 
- 
-//  @Override
-//  public String toString() {
-//    return String.format(
-//        "Customer[id=%d, firstName='%s', lastName='%s']",
-//        id, firstName, lastName);
-//  }
-
 @Override
 public Collection<? extends GrantedAuthority> getAuthorities() {
-	return this.authorities;
+	return null;
+//	return this.authorities;
 }
-
 
 @Override
 public String getPassword() {
@@ -89,8 +87,6 @@ public String getPassword() {
 public String getUsername() {
 	return this.userName;
 }
-
-
 
 @Override
 public boolean isAccountNonExpired() {
@@ -111,79 +107,5 @@ public boolean isCredentialsNonExpired() {
 public boolean isEnabled() {
 	return true;
 }
-
-
-
-public CustomerModel(String firstName, String lastName) {
-	this.firstName = firstName;
-	this.lastName = lastName;
-}
-
-public CustomerModel(int i, String string, String encode) {
-	this.id= i;
-	this.userName = string;
-	this.password = encode;
-}
-
-
-
-//public Customer(String userName2, String encodedPW, Set<Role> authorities2, String firstName2, String lastName2, String address2, String zipCode2, String phone2) {
-//	
-//}
-
-public CustomerModel(String userName2, String encodedPW, Set<Role> authorities2) {
-	this.userName = userName2;
-	this.password = encodedPW;
-	this.authorities = authorities2;
-}
-
-public CustomerModel(String userName2, String encodedPW, Set<Role> authorities2,
-		String firstName,String lastName,String address) {
-	this.userName = userName2;
-	this.password = encodedPW;
-	this.authorities = authorities2;
-	this.firstName = firstName;
-	this.lastName = lastName;
-	this.address = address;
-}
-
-
-public CustomerModel(String userName, String password, Set<Role> authorities,
-		String firstName, String lastName, String address,	String zipCode, String phone) {
-	super();	
-	this.firstName = firstName;
-	this.lastName = lastName;
-	this.userName = userName;
-	this.password = password;
-	this.address = address;
-	this.zipCode = zipCode;
-	this.phone = phone;
-	this.authorities = authorities;
-}
-
-public CustomerModel(int id, String firstName, String lastName, String userName, String password, String email,
-		String address, String zipCode, String phone, String stripeId, Set<Role> authorities) {
-	super();
-	
-}
-
-
-public CustomerModel(String userName2, String encodedPW, String firstName2, String lastName2,
-		String address2, String zipCode2, String phone2, int id2) {
-	this.id = id2;
-	this.firstName = firstName2;
-	this.lastName = lastName2;
-	this.userName = userName2;
-	this.password = encodedPW;
-	this.email = userName2;
-	this.address = address2;
-	this.zipCode = zipCode2;
-	this.phone = phone2;
-}
-
-
- 
-
-
 
 }
