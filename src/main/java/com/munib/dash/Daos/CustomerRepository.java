@@ -12,14 +12,6 @@ import com.munib.dash.models.CustomerModel;
 public interface CustomerRepository extends JpaRepository<CustomerModel,Integer> {
 	  List<CustomerModel> findByLastName(String lastName);
 	  Optional<CustomerModel> findByUserName(String username);
-
 	  CustomerModel findById(int id);
+	  
 	}
-	
-	
-//	public interface CustomerRepository  extends CrudRepository<Customer, Long> {
-//
-//		  List<Customer> findByLastName(String lastName);
-//
-//		  Customer findById(long id);
-//		}

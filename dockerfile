@@ -1,4 +1,4 @@
-##FROM openjdk:17-jdk-alpine
+#FROM openjdk:17-jdk-alpine
 #WORKDIR /app
 
 #COPY target/Hello_Pita_Dash_Service-0.0.1-SNAPSHOT.jar app.jar

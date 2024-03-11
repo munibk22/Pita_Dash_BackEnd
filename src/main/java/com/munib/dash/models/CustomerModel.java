@@ -24,21 +24,21 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Table(name = "Customers")
 public class CustomerModel implements UserDetails{
-  private static final long serialVersionUID = -2780711269963546409L;	
   @Id
   @GeneratedValue(strategy=GenerationType.AUTO)
   @Column(name="user_id")
   private int id;
-  private String firstName;
-  private String lastName;
   @Column(unique=true)
   private String userName;
+  private String firstName;
+  private String lastName;
   private String password;
   private String email;
   private String address;
   private String zipCode;
   private String phone;
   String stripeId;
+  private static final long serialVersionUID = -2780711269963546409L;
   
   public CustomerModel(RegistrationDTO registrationBody) {	
 		this.userName = registrationBody.getUserName();
@@ -58,16 +58,7 @@ public class CustomerModel implements UserDetails{
 //		  inverseJoinColumns = {@JoinColumn(name="role_id")}
 //		  )
 //  private Set<Role> authorities;
-  
-  
-  public void setEmail() {
-	  this.email = this.userName;
-  }
-  
-  public String getEmail() {
-	 return this.userName;
-  }
-  
+   
   public String getName () {
 	  return this.firstName+" "+this.lastName;
   }

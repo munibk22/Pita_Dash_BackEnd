@@ -16,27 +16,19 @@ import com.munib.dash.models.CustomerModel;
 @RestController
 @RequestMapping(value="/")
 @CrossOrigin("*")
-public class CustomerController {
+public class CustomerController {	
+	private CustomerService customerService;
 	
 	@Autowired
-	CustomerService customerService;
-	
-	
-	@GetMapping
-	public String home() {
-		System.out.println("Welcome to the Home Page");
-		return "Welcome to the Home Page2";
+	public CustomerController(CustomerService customerService) {
+		this.customerService = customerService;
 	}
+
 	@GetMapping(value="customer")
-	public String adminHello(CustomerModel user) {
+	public String adminHello(CustomerModel user) throws Exception {
 		System.out.println("Hello From Customer Controller");
 		return "Hello From Customer Controller";
 //		return customerService.loadUserByUsername(user.getUsername());
-	}
-	
-	@GetMapping(value="customer/findAll")
-	public List<CustomerModel> findAll() throws SQLException {
-		return customerService.findAll();
-	}
+	}	
 
 }

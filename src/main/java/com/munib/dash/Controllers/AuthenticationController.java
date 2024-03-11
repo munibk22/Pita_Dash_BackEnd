@@ -36,7 +36,7 @@ public class AuthenticationController {
 	public CustomerModel registerCustomer(@RequestBody RegistrationDTO registrationBody) throws Exception {
 		try {
 			log.info("Inside AuthenticationController method:  {}", currentMethod.getStackTrace()[0].getMethodName());
-			mailService.signUpMessage(registrationBody.getUserName());			
+			mailService.signUpMessage(registrationBody.getUserName(),registrationBody.getFirstName());			
 			return authenticationService.registerCustomer(registrationBody);
 		} catch (Exception e) {
 			log.error("Error inside AuthenticationController {}", e);
