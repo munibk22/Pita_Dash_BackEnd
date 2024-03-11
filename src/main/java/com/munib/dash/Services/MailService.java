@@ -20,14 +20,22 @@ public class MailService {
 		this.currentMethod = new Throwable();
 	}
 	
-	public boolean signUpMessage(String email) throws Exception {
+	public boolean signUpMessage(String email, String firstName) throws Exception {
 		log.info("Inside MailController signUpMessage method {}", currentMethod.getStackTrace()[0].getMethodName());
 		try {
 			SimpleMailMessage message = new SimpleMailMessage();
 			message.setTo(email);
 			message.setSubject("Welcome to PitaDash! - 🎉");
-			message.setText("Hello From PitaDash! - 🥑 "+
-			"\n ♥ Thank you for signing up ♥");
+			message.setText("Dear "+firstName + ","
+			+"\n\n Welcome to Pita Dash - 🥑, your new favorite destination for Middle Eastern "
+			+ "and Pakistani food! We're thrilled to have you on board."
+			+"\n\n We're committed to providing you with a seamless food delivery"
+			+ " to your doorstep."				
+			+ "\n If you have any questions, "
+			+ "please don't hesitate to reach out to us at skkitchenstore@gmail.com."
+			+"\n\n ♥ Thank you for signing up,"
+			+"\n-Sahar ♥"					
+			);
 			javaMailSender.send(message);
 			log.info("Inside MailController signUpMessage method {}", email);
 			

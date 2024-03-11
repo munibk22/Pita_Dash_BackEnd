@@ -1,13 +1,9 @@
 package com.munib.dash.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.munib.dash.Services.MailService;
-
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
@@ -25,10 +21,10 @@ public class MailController {
 		this.mailService = mailService;
 	}
 	
-	public boolean signUpMessage(String email) throws Exception {		
+	public boolean signUpMessage(String email, String firstName) throws Exception {		
 		log.info("Inside MailController signUpMessage method {}", currentMethod.getStackTrace()[0].getMethodName());
 		try {
-			Boolean sentMail = mailService.signUpMessage(email);			
+			Boolean sentMail = mailService.signUpMessage(email,firstName);			
 			return sentMail;			
 		} catch (Exception e) {
 			log.error("Error inside MailController signUpMessage {}", e);

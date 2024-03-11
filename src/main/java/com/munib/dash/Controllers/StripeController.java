@@ -25,8 +25,7 @@ public class StripeController {
 	@PostConstruct
 	public void init() {
 		Stripe.apiKey = dotenv.get("STRIPE_SECRET_KEY");
-	}
-	
+	}	
 	
 	public CustomerModel index(CustomerModel data ) throws StripeException {
 		Map<String,Object> params = new HashMap<String,Object>();
