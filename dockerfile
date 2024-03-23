@@ -1,3 +1,9 @@
+FROM openjdk:13-ea-27-jdk-alpine
+COPY target/pitadashservice.jar /app.jar
+# Start the application
+ENTRYPOINT ["java", "-jar", "/app.jar"] 
+
+
 #FROM openjdk:17-jdk-alpine
 #WORKDIR /app
 
@@ -21,3 +27,4 @@
 
 #docker run -p 8080:8080 -e MYSQL_USERNAME=root -e MYSQL_PASSWORD=root -e MYSQL_DATABASE=pitadash pitadashservice3
 #http://192.168.0.235:3000
+
