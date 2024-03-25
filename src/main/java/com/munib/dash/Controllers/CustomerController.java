@@ -23,6 +23,11 @@ public class CustomerController {
 	public CustomerController(CustomerService customerService) {
 		this.customerService = customerService;
 	}
+	
+	@GetMapping
+	public String greet() {
+		return "Welcome to PitaDash Service";
+	}
 
 	@GetMapping(value="customer")
 	public String adminHello(CustomerModel user) throws Exception {
